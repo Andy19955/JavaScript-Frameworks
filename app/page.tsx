@@ -7,7 +7,7 @@ import { Product } from "./interfaces/product";
 export default async function Home() {
   const response = await fetch("https://v2.api.noroff.dev/online-shop");
   if (!response.ok) {
-    return <p>Kunne ikke laste produkter. Prøv igjen senere.</p>;
+    return <p>Could not load products. Please try again later.</p>;
   }
 
   const result = await response.json();
