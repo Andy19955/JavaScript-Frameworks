@@ -2,19 +2,12 @@ import Image from "next/image";
 import { Product } from "../interfaces/product";
 
 export default function ProductCard({ product }: { product: Product }) {
-  const onSale = product.discountedPrice != null && product.discountedPrice < product.price ? true : false;
+  const onSale = product.discountedPrice != null && product.discountedPrice < product.price ? ((product.price - product.discountedPrice) / product.price) * 100 : false;
   return (
     <article className="flex flex-col rounded-lg bg-white/5 overflow-hidden shadow-sm hover:shadow-lg transition">
       <div className="relative h-52 w-full bg-zinc-800">
-        <Image
-          src={product.image?.url || "https://via.placeholder.com/600x400?text=No+Image"}
-          alt={product.image?.alt || product.title}
-          width={600}
-          height={400}
-          className="object-cover max-h-52"
-          unoptimized
-        />
-        {onSale ? <span className="absolute top-3 left-3 rounded-full bg-black/80 px-3 py-1 text-xs font-semibold text-orange-300 ring-1 ring-orange-600/20 shadow-sm">ON SALE</span> : null}
+        <Image src={product.image?.url} alt={product.image?.alt || product.title} width={600} height={400} className="object-cover max-h-52" unoptimized />
+        {onSale ? <span className="absolute top-3 left-3 rounded-full bg-black/80 px-3 py-1 font-semibold text-orange-300 ring-1 ring-orange-600/20 shadow-sm">-{onSale.toFixed(0)}%</span> : null}
       </div>
       <div className="p-4 flex-1 flex flex-col justify-between">
         <div>
