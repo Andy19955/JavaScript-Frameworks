@@ -14,8 +14,8 @@ export default function Header() {
           <Link href="/" className="px-3 py-2 rounded-md text-orange-300 hover:bg-orange-600/10 hover:text-orange-200 transition">
             Home
           </Link>
-          <Link href="/about" className="px-3 py-2 rounded-md text-orange-300 hover:bg-orange-600/10 hover:text-orange-200 transition">
-            About
+          <Link href="/cart" className="px-3 py-2 rounded-md text-orange-300 hover:bg-orange-600/10 hover:text-orange-200 transition">
+            Cart
           </Link>
           <Link href="/contact" className="px-3 py-2 rounded-md border border-orange-600 bg-orange-600/10 text-orange-100 hover:bg-orange-600 hover:text-black transition">
             Contact

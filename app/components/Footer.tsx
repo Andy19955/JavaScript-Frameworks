@@ -7,11 +7,11 @@ export default function Footer() {
         <div className="flex flex-col gap-3">
           <div className="flex items-center gap-3">
             <div className="h-10 w-10 rounded-full bg-linear-to-br from-orange-400 to-orange-600 flex items-center justify-center shadow-md">
-              <span className="font-bold text-black">A</span>
+              <span className="font-bold text-black">TOS</span>
             </div>
             <h3 className="text-lg font-semibold">The Online Store</h3>
           </div>
-          <p className="text-sm text-zinc-300">Built with care — orange accents and bold blacks for contrast.</p>
+          <p className="text-sm text-zinc-300">Modern products to elevate your lifestyle.</p>
         </div>
         <div></div>
         <div>
@@ -23,8 +23,8 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="/about" className="hover:text-orange-300">
-                About
+              <Link href="/cart" className="hover:text-orange-300">
+                Cart
               </Link>
             </li>
             <li>
@@ -38,9 +38,6 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="mx-auto max-w-6xl px-6 py-4 text-sm text-zinc-400 flex flex-col sm:flex-row items-center justify-between">
           <span>© {new Date().getFullYear()} The Online Store</span>
-          <span className="mt-2 sm:mt-0">
-            Made with <span className="text-orange-400">♥</span>
-          </span>
         </div>
       </div>
     </footer>
