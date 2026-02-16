@@ -3,12 +3,20 @@ export interface Product {
   title: string;
   description: string;
   price: number;
-  discountedPrice?: number | null;
-  image?: {
+  discountedPrice: number;
+  image: {
     url: string;
     alt: string;
   };
-  badge?: string;
-  rating?: number;
-  tags?: string[];
+  badge: string;
+  rating: number;
+  tags: string[];
+  reviews: Review[];
+}
+
+export interface Review {
+  id: string;
+  username: string;
+  rating: number;
+  description: string;
 }
