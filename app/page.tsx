@@ -4,12 +4,6 @@ import Image from "next/image";
 import ProductCard from "./components/ProductCard";
 import { Product } from "./interfaces/product";
 
-interface Review {
-  id: string;
-  username: string;
-  rating: number;
-}
-
 export default async function Home() {
   const response = await fetch("https://v2.api.noroff.dev/online-shop");
   if (!response.ok) {
