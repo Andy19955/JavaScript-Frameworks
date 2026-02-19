@@ -3,7 +3,7 @@
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Image from "next/image";
-import { FetchProducts } from "./api/FetchProducts";
+import { FetchProducts } from "./components/FetchProducts";
 
 export default function Home() {
   return (
