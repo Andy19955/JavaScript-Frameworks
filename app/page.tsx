@@ -1,18 +1,11 @@
+"use client";
+
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Image from "next/image";
-import ProductCard from "./components/ProductCard";
-import { Product } from "./interfaces/product";
+import { FetchProducts } from "./api/FetchProducts";
 
-export default async function Home() {
-  const response = await fetch("https://v2.api.noroff.dev/online-shop");
-  if (!response.ok) {
-    return <p>Could not load products. Please try again later.</p>;
-  }
-
-  const result = await response.json();
-  const products = result.data;
-
+export default function Home() {
   return (
     <>
       <Header />
@@ -48,15 +41,7 @@ export default async function Home() {
                 View all
               </a>
             </div>
-            {products && products.length > 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
-                {products.slice(0, 12).map((product: Product) => (
-                  <ProductCard key={product.id} product={product} />
-                ))}
-              </div>
-            ) : (
-              <p className="text-center text-zinc-400">Ingen produkter tilgjengelig.</p>
-            )}
+            <FetchProducts />
           </section>
         </div>
       </main>
