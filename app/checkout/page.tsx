@@ -47,11 +47,11 @@ export default function CheckoutPage() {
               {error && <div className="mb-4 text-sm text-red-400">{error}</div>}
               <label className="block mb-3">
                 <span className="text-sm text-zinc-300">Full name</span>
-                <input name="name" value={form.name} onChange={handleChange} className="mt-1 block w-full rounded bg-white/5 px-3 py-2 text-zinc-100" />
+                <input name="name" type="text" value={form.name} onChange={handleChange} className="mt-1 block w-full rounded bg-white/5 px-3 py-2 text-zinc-100" />
               </label>
               <label className="block mb-3">
                 <span className="text-sm text-zinc-300">Email</span>
-                <input name="email" value={form.email} onChange={handleChange} className="mt-1 block w-full rounded bg-white/5 px-3 py-2 text-zinc-100" />
+                <input name="email" type="email" value={form.email} onChange={handleChange} className="mt-1 block w-full rounded bg-white/5 px-3 py-2 text-zinc-100" />
               </label>
               <label className="block mb-3">
                 <span className="text-sm text-zinc-300">Address</span>
@@ -60,11 +60,11 @@ export default function CheckoutPage() {
               <div className="grid grid-cols-2 gap-4">
                 <label className="block">
                   <span className="text-sm text-zinc-300">City</span>
-                  <input name="city" value={form.city} onChange={handleChange} className="mt-1 block w-full rounded bg-white/5 px-3 py-2 text-zinc-100" />
+                  <input name="city" type="text" value={form.city} onChange={handleChange} className="mt-1 block w-full rounded bg-white/5 px-3 py-2 text-zinc-100" />
                 </label>
                 <label className="block">
                   <span className="text-sm text-zinc-300">ZIP</span>
-                  <input name="zip" value={form.zip} onChange={handleChange} className="mt-1 block w-full rounded bg-white/5 px-3 py-2 text-zinc-100" />
+                  <input name="zip" type="text" value={form.zip} onChange={handleChange} className="mt-1 block w-full rounded bg-white/5 px-3 py-2 text-zinc-100" />
                 </label>
               </div>
               <div className="mt-6 flex gap-4">
