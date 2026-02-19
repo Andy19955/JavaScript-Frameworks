@@ -1,7 +1,10 @@
+"use client";
+
 import Image from "next/image";
 import { Product } from "../interfaces/product";
+import Link from "next/link";
 
-export default function ProductCard({ product }: { product: Product }) {
+export default function ProductCard({ product, addToCart }: { product: Product; addToCart: () => void }) {
   const onSale = product.discountedPrice != null && product.discountedPrice < product.price ? ((product.price - product.discountedPrice) / product.price) * 100 : false;
   return (
     <article className="flex flex-col rounded-lg bg-white/5 overflow-hidden shadow-sm hover:shadow-lg transition">
@@ -27,14 +30,18 @@ export default function ProductCard({ product }: { product: Product }) {
         <div className="mt-4 flex flex-col gap-3 justify-between">
           <div className="flex items-center gap-2">
             {Array.from({ length: product.rating ?? 4 }).map((_, i) => (
-              <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="text-orange-400">
+              <svg key={`${product.id}-star-${i}`} width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="text-orange-400">
                 <path d="M12 .587l3.668 7.431 8.2 1.193-5.934 5.788 1.401 8.168L12 18.896l-7.335 3.869 1.401-8.168L.132 9.211l8.2-1.193z" />
               </svg>
             ))}
           </div>
           <div className="flex items-center justify-between gap-2">
-            <button className="rounded-md px-3 py-2 bg-white/5 text-orange-300 hover:bg-orange-600/10 transition">Quick view</button>
-            <button className="rounded-md bg-orange-500 px-3 py-2 text-black font-medium hover:brightness-95">Add</button>
+            <Link href={`/product/${product.id}`} className="rounded-md px-3 py-2 bg-white/5 text-orange-300 hover:bg-orange-600/10 hover:cursor-pointer transition">
+              View
+            </Link>
+            <button className="rounded-md bg-orange-500 px-3 py-2 text-black font-medium hover:cursor-pointer hover:brightness-95" onClick={() => addToCart()}>
+              Add
+            </button>
           </div>
         </div>
       </div>

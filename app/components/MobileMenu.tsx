@@ -16,7 +16,7 @@ export default function MobileMenu({ open, onClose }: { open: boolean; onClose: 
           <Link href="/" onClick={onClose} className="text-2xl font-semibold text-white">
             Home
           </Link>
-          <Link href="/cart" onClick={onClose} className="text-2xl font-semibold text-white/90">
+          <Link href="/pages/cart" onClick={onClose} className="text-2xl font-semibold text-white/90">
             Cart
           </Link>
           <Link href="/contact" onClick={onClose} className="text-2xl font-semibold text-white/90">
