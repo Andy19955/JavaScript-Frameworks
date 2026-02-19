@@ -42,7 +42,7 @@ export function FetchProducts() {
             ))}
           </div>
         ) : (
-          <p className="text-center text-zinc-400">Ingen produkter tilgjengelig.</p>
+          <p className="text-center text-zinc-400">No products found.</p>
         )}
       </>
     );
