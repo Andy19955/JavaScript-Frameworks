@@ -63,7 +63,7 @@ export default function ProductDetail({ id }: { id: string }) {
             onClick={() => {
               addToCart(product);
             }}
-            className="text-black bg-orange-400 font-semibold hover:bg-orange-500 px-5 py-3 rounded shadow"
+            className="text-black bg-orange-400 font-semibold hover:bg-orange-500 px-5 py-3 hover:cursor-pointer rounded shadow"
           >
             Add to cart
           </button>

@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 import { useCart } from "../context/CartContext";
 
 export default function CheckoutPage() {
-  const { cart } = useCart();
+  const { cart, clearCart, showToast } = useCart();
 
   const items = cart.reduce<Record<string, { title: string; qty: number; price: number }>>((acc, p) => {
     if (acc[p.id]) acc[p.id].qty++;
@@ -31,7 +31,9 @@ export default function CheckoutPage() {
       return;
     }
     setError("");
-    alert(`Order submitted — ${summary.length} line(s), total ${subtotal.toFixed(2)}.`);
+    showToast?.(`Order submitted — ${summary.length} line(s), total $${subtotal.toFixed(2)}.`);
+    clearCart?.();
+    setForm({ name: "", email: "", address: "", city: "", zip: "" });
   };
   return (
     <>
@@ -66,7 +68,7 @@ export default function CheckoutPage() {
                 </label>
               </div>
               <div className="mt-6 flex gap-4">
-                <button type="submit" className="px-6 py-3 bg-orange-400 text-black font-semibold rounded">
+                <button type="submit" className="px-6 py-3 bg-orange-400 text-black font-semibold rounded hover:cursor-pointer hover:bg-orange-500">
                   Place order
                 </button>
                 <button
@@ -75,7 +77,7 @@ export default function CheckoutPage() {
                     setForm({ name: "", email: "", address: "", city: "", zip: "" });
                     setError("");
                   }}
-                  className="px-4 py-3 border border-zinc-700 rounded text-zinc-200"
+                  className="px-4 py-3 border border-zinc-700 rounded text-zinc-200 hover:cursor-pointer hover:bg-zinc-800"
                 >
                   Reset
                 </button>

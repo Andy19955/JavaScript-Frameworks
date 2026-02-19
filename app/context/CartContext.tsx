@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, useState, ReactNode, useRef } from "react";
 import { Product } from "../interfaces/product";
 import { CartContextInterface } from "../interfaces/cartContextInterface";
 
@@ -8,9 +8,18 @@ const CartContext = createContext<CartContextInterface | undefined>(undefined);
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [cart, setCart] = useState<Product[]>([]);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const toastTimeout = useRef<number | null>(null);
 
   const addToCart = (product: Product) => {
     setCart((prev) => [...prev, product]);
+    showToast(`${product.title} added to cart`);
+  };
+
+  const showToast = (message: string) => {
+    setToastMessage(message);
+    if (toastTimeout.current) window.clearTimeout(toastTimeout.current);
+    toastTimeout.current = window.setTimeout(() => setToastMessage(null), 3000);
   };
 
   const removeFromCart = (id: string) => {
@@ -29,7 +38,15 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   const clearCart = () => setCart([]);
 
-  return <CartContext.Provider value={{ cart, addToCart, removeFromCart, removeOneFromCart, clearCart }}>{children}</CartContext.Provider>;
+  const clearToast = () => {
+    setToastMessage(null);
+    if (toastTimeout.current) {
+      window.clearTimeout(toastTimeout.current);
+      toastTimeout.current = null;
+    }
+  };
+
+  return <CartContext.Provider value={{ cart, addToCart, removeFromCart, removeOneFromCart, clearCart, toastMessage, clearToast, showToast }}>{children}</CartContext.Provider>;
 }
 
 export function useCart() {

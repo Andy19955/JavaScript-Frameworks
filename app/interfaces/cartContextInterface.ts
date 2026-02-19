@@ -6,4 +6,7 @@ export interface CartContextInterface {
   removeFromCart: (id: string) => void;
   removeOneFromCart: (id: string) => void;
   clearCart: () => void;
+  toastMessage?: string | null;
+  clearToast?: () => void;
+  showToast?: (message: string) => void;
 }
